@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jersey-deployment
+  labels:
+    app: jersey
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jersey
+  template:
+    metadata:
+      labels:
+        app: jersey
+    spec:
+      containers:
+        - name: jersey
+          image: psamsotha/jersey-kubernetes
+          ports:
+            - containerPort: 8080
